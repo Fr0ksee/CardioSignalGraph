@@ -58,7 +58,7 @@ namespace CardioSignalGraph
             var Q = new SignalWave(-0.1, 0.46, 0.02);
             var R = new SignalWave(1, 0.5, 0.04);
             var S = new SignalWave(-0.17, 0.54, 0.04);
-            var T = new SignalWave(0.2, 0.7, 0.28);
+            var T = new SignalWave(0.2, 0.7, 0.18);
             arr[0] = P;
             arr[1] = Q;
             arr[2] = R;
@@ -69,29 +69,36 @@ namespace CardioSignalGraph
 
         private void Chart_Update(SignalWave[] arr)
         {
-
             chart.Series[0].Points.Clear();
-            while (x <= 1)
+            double[] yValues = new double[1000];
+
+            for (int i = 0; i < arr.Length; i++)
             {
-                //if (x < arr[0].GetAmplitudeMoment() - (arr[0].GetWidth() / 2))
-                //{
-                //    y = 0;
-                //}
-                //else if (x > arr[-1].GetAmplitudeMoment() + (arr[-1].GetWidth() / 2))
-                //{
-                //    y = 0;
-                //}
-                //else
-                //{
-                //    int i = 0;
-                //    y = (arr[i].GetAmplitude) * Math.Exp(-(x -) / ())
-                //}
-                int i = 2;
-                y = arr[i].GetAmplitude() * Math.Exp(-((Math.Sqrt(x - arr[i].GetAmplitudeMoment())) / (2 * Math.Sqrt(arr[i].GetWidth()))));
-                chart.Series[0].Points.AddXY(x, y);
-                x += 0.001;
+                double a = arr[i].GetAmplitude();
+                double m = arr[i].GetAmplitudeMoment();
+                double w = arr[i].GetWidth();
+                double start = m - w / 2.0;
+                double end = m + w / 2.0;
+
+                for (int j = 0; j < yValues.Length; j++)
+                {
+                    double x = j / 1000.0;
+
+                    if (x >= start && x <= end)
+                    {
+                        double y = a * Math.Exp(-((Math.Pow(x - m, 2)) / (2 * Math.Pow(w, 2))));
+                        yValues[j] += y;
+                    }
+                }
+            }
+
+            for (int i = 0; i < yValues.Length; i++)
+            {
+                double x = i / 1000.0;
+                chart.Series[0].Points.AddXY(x, yValues[i]);
             }
         }
+
 
     }
 }
