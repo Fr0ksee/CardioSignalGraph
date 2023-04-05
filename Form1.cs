@@ -10,27 +10,6 @@ using System.Windows.Forms;
 
 namespace CardioSignalGraph
 {
-    class SignalWave
-    {
-        private double amplitude;
-        private double amp_moment;
-        private double width;
-
-        public SignalWave(double amplitude, double amp_moment, double width)
-        {
-            this.amplitude = amplitude;
-            this.amp_moment = amp_moment;
-            this.width = width;
-        }
-        public void SetAmplitude(double amplitude){this.amplitude = amplitude;}
-        public void SetAmplitudeMoment(double amp_moment){this.amp_moment = amp_moment;}
-        public void SetWidth(double width){this.width = width;}
-
-        public double GetAmplitude() {return this.amplitude;}
-        public double GetAmplitudeMoment() {return this.amp_moment;}
-        public double GetWidth() { return this.width; }
-    }
-
     public partial class Form : System.Windows.Forms.Form
     {
 
@@ -43,6 +22,21 @@ namespace CardioSignalGraph
             y = 0;
         }
 
+        private void Default_Values()
+        {
+            SignalWave[] arr = new SignalWave[5];
+            var P = new SignalWave(0.1, 0.4, 0.02);
+            var Q = new SignalWave(-0.1, 0.46, 0.01);
+            var R = new SignalWave(1, 0.5, 0.01);
+            var S = new SignalWave(-0.17, 0.54, 0.02);
+            var T = new SignalWave(0.2, 0.7, 0.04);
+            arr[0] = P;
+            arr[1] = Q;
+            arr[2] = R;
+            arr[3] = S;
+            arr[4] = T;
+            Chart_Update(arr);
+        }
         private void Form1_Load(object sender, EventArgs e)
         {
             chart.ChartAreas[0].AxisY.Maximum = 1.2;
@@ -53,18 +47,12 @@ namespace CardioSignalGraph
             chart.ChartAreas[0].AxisX.Minimum = 0;
             chart.ChartAreas[0].AxisX.Interval = 0.1;
 
-            SignalWave[] arr = new SignalWave[5];
-            var P = new SignalWave( 0.1,  0.4, 0.12);
-            var Q = new SignalWave(-0.1, 0.46, 0.02);
-            var R = new SignalWave(1, 0.5, 0.04);
-            var S = new SignalWave(-0.17, 0.54, 0.04);
-            var T = new SignalWave(0.2, 0.7, 0.18);
-            arr[0] = P;
-            arr[1] = Q;
-            arr[2] = R;
-            arr[3] = S;
-            arr[4] = T;
-            Chart_Update(arr);
+            Default_Values();
+        }
+
+        private void WidthBar1_ValueChanged(object sender, EventArgs e)
+        {
+            Default_Values();
         }
 
         private void Chart_Update(SignalWave[] arr)
@@ -74,21 +62,15 @@ namespace CardioSignalGraph
 
             for (int i = 0; i < arr.Length; i++)
             {
-                double a = arr[i].GetAmplitude();
-                double m = arr[i].GetAmplitudeMoment();
-                double w = arr[i].GetWidth();
-                double start = m - w / 2.0;
-                double end = m + w / 2.0;
+                double a = arr[i].amplitude;
+                double m = arr[i].amp_moment;
+                double w = arr[i].width;
 
                 for (int j = 0; j < yValues.Length; j++)
                 {
                     double x = j / 1000.0;
-
-                    if (x >= start && x <= end)
-                    {
-                        double y = a * Math.Exp(-((Math.Pow(x - m, 2)) / (2 * Math.Pow(w, 2))));
-                        yValues[j] += y;
-                    }
+                    double y = a * Math.Exp(-((Math.Pow(x - m, 2)) / (2 * Math.Pow(w, 2))));
+                    yValues[j] += y;
                 }
             }
 
@@ -98,7 +80,19 @@ namespace CardioSignalGraph
                 chart.Series[0].Points.AddXY(x, yValues[i]);
             }
         }
+    }
+    class SignalWave
+    {
+        public double amplitude { get; set; }
+        public double  amp_moment { get; set; }
+        public double width { get; set; }
 
 
+        public SignalWave(double amplitude, double amp_moment, double width)
+        {
+            this.amplitude = amplitude;
+            this.amp_moment = amp_moment;
+            this.width = width;
+        }
     }
 }

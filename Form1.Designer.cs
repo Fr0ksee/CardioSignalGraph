@@ -42,24 +42,24 @@
             this.AmplitudeBar = new System.Windows.Forms.TrackBar();
             this.groupBoxAll = new System.Windows.Forms.GroupBox();
             this.WidthBox = new System.Windows.Forms.GroupBox();
-            this.WidthBar2 = new System.Windows.Forms.TrackBar();
             this.WidthBar1 = new System.Windows.Forms.TrackBar();
             this.timeBox = new System.Windows.Forms.GroupBox();
             this.TimeBar = new System.Windows.Forms.TrackBar();
             this.chart = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.GridControlBox = new System.Windows.Forms.GroupBox();
+            this.WidthBar2 = new System.Windows.Forms.TrackBar();
             ((System.ComponentModel.ISupportInitialize)(this.Pulse_OX_numeric)).BeginInit();
             this.ZubecBox.SuspendLayout();
             this.AmplitudeBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.AmplitudeBar)).BeginInit();
             this.groupBoxAll.SuspendLayout();
             this.WidthBox.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.WidthBar2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.WidthBar1)).BeginInit();
             this.timeBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.TimeBar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chart)).BeginInit();
             this.GridControlBox.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.WidthBar2)).BeginInit();
             this.SuspendLayout();
             // 
             // Pulse_OX_numeric
@@ -224,19 +224,16 @@
             this.WidthBox.TabStop = false;
             this.WidthBox.Text = "Ширина";
             // 
-            // WidthBar2
-            // 
-            this.WidthBar2.Location = new System.Drawing.Point(5, 82);
-            this.WidthBar2.Name = "WidthBar2";
-            this.WidthBar2.Size = new System.Drawing.Size(356, 45);
-            this.WidthBar2.TabIndex = 1;
-            // 
             // WidthBar1
             // 
             this.WidthBar1.Location = new System.Drawing.Point(5, 17);
+            this.WidthBar1.Maximum = 20;
+            this.WidthBar1.Minimum = 1;
             this.WidthBar1.Name = "WidthBar1";
             this.WidthBar1.Size = new System.Drawing.Size(356, 45);
             this.WidthBar1.TabIndex = 0;
+            this.WidthBar1.Value = 10;
+            this.WidthBar1.ValueChanged += new System.EventHandler(this.WidthBar1_ValueChanged);
             // 
             // timeBox
             // 
@@ -286,6 +283,17 @@
             this.GridControlBox.TabStop = false;
             this.GridControlBox.Text = "ЧСС уд/хв";
             // 
+            // WidthBar2
+            // 
+            this.WidthBar2.Location = new System.Drawing.Point(5, 82);
+            this.WidthBar2.Maximum = 20;
+            this.WidthBar2.Minimum = 1;
+            this.WidthBar2.Name = "WidthBar2";
+            this.WidthBar2.Size = new System.Drawing.Size(356, 45);
+            this.WidthBar2.TabIndex = 19;
+            this.WidthBar2.TickStyle = System.Windows.Forms.TickStyle.TopLeft;
+            this.WidthBar2.Value = 10;
+            // 
             // Form
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -308,13 +316,13 @@
             this.groupBoxAll.ResumeLayout(false);
             this.WidthBox.ResumeLayout(false);
             this.WidthBox.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.WidthBar2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.WidthBar1)).EndInit();
             this.timeBox.ResumeLayout(false);
             this.timeBox.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.TimeBar)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chart)).EndInit();
             this.GridControlBox.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.WidthBar2)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -335,11 +343,11 @@
         private System.Windows.Forms.DataVisualization.Charting.Chart chart;
         private System.Windows.Forms.TrackBar AmplitudeBar;
         private System.Windows.Forms.GroupBox WidthBox;
-        private System.Windows.Forms.TrackBar WidthBar2;
         private System.Windows.Forms.TrackBar WidthBar1;
         private System.Windows.Forms.GroupBox timeBox;
         private System.Windows.Forms.TrackBar TimeBar;
         private System.Windows.Forms.GroupBox GridControlBox;
+        private System.Windows.Forms.TrackBar WidthBar2;
     }
 }
 
