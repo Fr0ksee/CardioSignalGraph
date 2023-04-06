@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.Pulse_OX_numeric = new System.Windows.Forms.NumericUpDown();
             this.ZubecBox = new System.Windows.Forms.GroupBox();
             this.radioButtonP = new System.Windows.Forms.RadioButton();
@@ -263,21 +263,25 @@
             // TimeBar
             // 
             this.TimeBar.Location = new System.Drawing.Point(5, 17);
+            this.TimeBar.Maximum = 15;
+            this.TimeBar.Minimum = 5;
             this.TimeBar.Name = "TimeBar";
             this.TimeBar.Size = new System.Drawing.Size(356, 45);
             this.TimeBar.TabIndex = 0;
+            this.TimeBar.Value = 10;
+            this.TimeBar.ValueChanged += new System.EventHandler(this.TimeBar_ValueChanged);
             // 
             // chart
             // 
-            chartArea3.Name = "ChartArea1";
-            this.chart.ChartAreas.Add(chartArea3);
+            chartArea2.Name = "ChartArea1";
+            this.chart.ChartAreas.Add(chartArea2);
             this.chart.Location = new System.Drawing.Point(10, 10);
             this.chart.Name = "chart";
-            series3.BorderWidth = 2;
-            series3.ChartArea = "ChartArea1";
-            series3.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
-            series3.Name = "Signal";
-            this.chart.Series.Add(series3);
+            series2.BorderWidth = 2;
+            series2.ChartArea = "ChartArea1";
+            series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
+            series2.Name = "Signal";
+            this.chart.Series.Add(series2);
             this.chart.Size = new System.Drawing.Size(500, 500);
             this.chart.TabIndex = 17;
             this.chart.Text = "chart1";
