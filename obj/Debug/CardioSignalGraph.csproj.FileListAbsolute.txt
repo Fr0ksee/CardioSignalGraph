@@ -9,3 +9,14 @@ D:\Studing\AI\Lab_3\CardioSignalGraph\obj\Debug\CardioSignalGraph.csproj.CoreCom
 D:\Studing\AI\Lab_3\CardioSignalGraph\obj\Debug\CardioSignalGraph.exe
 D:\Studing\AI\Lab_3\CardioSignalGraph\obj\Debug\CardioSignalGraph.pdb
 D:\Studing\AI\Lab_3\CardioSignalGraph\obj\Debug\CardioSignalGraph.Form.resources
+C:\Studing\AI\3\bin\Debug\CardioSignalGraph.exe.config
+C:\Studing\AI\3\bin\Debug\CardioSignalGraph.exe
+C:\Studing\AI\3\bin\Debug\CardioSignalGraph.pdb
+C:\Studing\AI\3\obj\Debug\CardioSignalGraph.csproj.AssemblyReference.cache
+C:\Studing\AI\3\obj\Debug\CardioSignalGraph.csproj.SuggestedBindingRedirects.cache
+C:\Studing\AI\3\obj\Debug\CardioSignalGraph.Form.resources
+C:\Studing\AI\3\obj\Debug\CardioSignalGraph.Properties.Resources.resources
+C:\Studing\AI\3\obj\Debug\CardioSignalGraph.csproj.GenerateResource.cache
+C:\Studing\AI\3\obj\Debug\CardioSignalGraph.csproj.CoreCompileInputs.cache
+C:\Studing\AI\3\obj\Debug\CardioSignalGraph.exe
+C:\Studing\AI\3\obj\Debug\CardioSignalGraph.pdb
