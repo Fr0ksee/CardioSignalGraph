@@ -147,11 +147,23 @@ namespace CardioSignalGraph
             {
                 AmplitudeBar.Enabled = false;
                 TimeBar.Enabled = false;
+                WidthBar1.Value = 0;
+                WidthBar1.Maximum = -10;
+                WidthBar1.Maximum = 10;
+                WidthBar2.Value = 0;
+                WidthBar2.Maximum = -10;
+                WidthBar2.Maximum = 10;
             }
             else
             {
                 AmplitudeBar.Enabled = true;
                 TimeBar.Enabled = true;
+                WidthBar1.Value = 0;
+                WidthBar1.Maximum = -10;
+                WidthBar1.Maximum = 10;
+                WidthBar2.Value = 0;
+                WidthBar2.Maximum = -10;
+                WidthBar2.Maximum = 10;
             }
 
         }
