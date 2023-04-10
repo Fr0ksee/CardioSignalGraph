@@ -19,7 +19,7 @@ namespace CardioSignalGraph
         public SignalWave R = new SignalWave(1, 0.5, 0.01); // start: 0.470 || finish: 0.530
         public SignalWave S = new SignalWave(-0.175, 0.575, 0.015); // start: 0.530 || finish: 0.620
         public SignalWave T = new SignalWave(0.2, 0.76, 0.04); // start: 0.740 || finish: 0.880
-        public SignalWave[] arr = new SignalWave[5]; 
+        public SignalWave[] arr = new SignalWave[5];
         public Form()
         {
             InitializeComponent();
@@ -48,11 +48,11 @@ namespace CardioSignalGraph
             {
                 double a = arr[i].current_amplitude;
                 double m = arr[i].current_moment;
-                
+
 
                 for (int j = 0; j < yValues.Length; j++)
                 {
-                    
+
                     double x = j / 1000.0;
                     double w = arr[i].l_width;
                     if (x > m)
@@ -65,7 +65,7 @@ namespace CardioSignalGraph
             }
             for (int i = 0; i < yValues.Length; i++)
             {
-                double x = i / 1000.0;
+                double x = i / (Convert.ToDouble(Pulse_OX_numeric.Value) * 1000 / 60);
                 chart.Series[0].Points.AddXY(x, yValues[i]);
             }
         }
@@ -97,15 +97,8 @@ namespace CardioSignalGraph
         private void TimeBar_ValueChanged(object sender, EventArgs e)
         {
             int i = RadioButtonCheck();
-            double temp_value = (TimeBar.Value - 10.0) / 100.0;
-            if (TimeBar.Value == 10)
-            {
-                arr[i].current_moment = arr[i].default_moment;
-            }
-            else
-            {
-                arr[i].current_moment = arr[i].default_moment + temp_value;
-            }
+            double temp_value = TimeBar.Value / 100.0;
+            arr[i].current_moment = arr[i].default_moment + temp_value;
 
             Chart_Update();
         }
@@ -115,12 +108,6 @@ namespace CardioSignalGraph
                 WidthBar2.Value = WidthBar1.Value;
 
             double temp_value = WidthBar1.Value / 10.0;
-            if (radioButtonST.Checked)
-            {
-                T.current_moment = T.default_moment + temp_value/2.0;
-                Chart_Update();
-                return;
-            }
             arr[RadioButtonCheck()].l_width = arr[RadioButtonCheck()].width * temp_value;
 
             Chart_Update();
@@ -131,62 +118,36 @@ namespace CardioSignalGraph
                 WidthBar1.Value = WidthBar2.Value;
 
             double temp_value = WidthBar2.Value / 10.0;
-            if (radioButtonST.Checked)
-            {
-                T.current_moment = T.default_moment + temp_value;
-                Chart_Update();
-                return;
-            }
             arr[RadioButtonCheck()].r_width = arr[RadioButtonCheck()].width * temp_value;
 
             Chart_Update();
         }
-        private void radioButton_Click(object sender, EventArgs e)
+        private void Pulse_OX_numeric_ValueChanged(object sender, EventArgs e)
         {
-            if (radioButtonST.Checked)
-            {
-                AmplitudeBar.Enabled = false;
-                TimeBar.Enabled = false;
-                WidthBar1.Value = 0;
-                WidthBar1.Maximum = -10;
-                WidthBar1.Maximum = 10;
-                WidthBar2.Value = 0;
-                WidthBar2.Maximum = -10;
-                WidthBar2.Maximum = 10;
-            }
-            else
-            {
-                AmplitudeBar.Enabled = true;
-                TimeBar.Enabled = true;
-                WidthBar1.Value = 0;
-                WidthBar1.Maximum = -10;
-                WidthBar1.Maximum = 10;
-                WidthBar2.Value = 0;
-                WidthBar2.Maximum = -10;
-                WidthBar2.Maximum = 10;
-            }
-
+            double scale = 60 * 1000 / Convert.ToDouble(Pulse_OX_numeric.Value) / 1000;
+            chart.ChartAreas[0].AxisX.Maximum = scale;
+            Chart_Update();
         }
-    }
-    public class SignalWave
-    {
-        public double default_amplitude { get; }
-        public double  default_moment { get; }
-        public double width { get; }
-        public double r_width { get; set; }
-        public double l_width { get; set; }
-        public double current_amplitude { get; set; }
-        public double current_moment { get; set; }
-
-        public SignalWave(double amplitude, double default_moment, double width)
+        public class SignalWave
         {
-            this.default_amplitude = amplitude;
-            this.current_amplitude = amplitude;
-            this.default_moment = default_moment;
-            this.current_moment = default_moment;
-            this.width = width;
-            this.r_width = width;
-            this.l_width = width;
+            public double default_amplitude { get; }
+            public double default_moment { get; }
+            public double width { get; }
+            public double r_width { get; set; }
+            public double l_width { get; set; }
+            public double current_amplitude { get; set; }
+            public double current_moment { get; set; }
+
+            public SignalWave(double amplitude, double default_moment, double width)
+            {
+                this.default_amplitude = amplitude;
+                this.current_amplitude = amplitude;
+                this.default_moment = default_moment;
+                this.current_moment = default_moment;
+                this.width = width;
+                this.r_width = width;
+                this.l_width = width;
+            }
         }
     }
 }
