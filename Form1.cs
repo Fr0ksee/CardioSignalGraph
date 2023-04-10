@@ -14,12 +14,12 @@ namespace CardioSignalGraph
 {
     public partial class Form : System.Windows.Forms.Form
     {
-        public SignalWave P = new SignalWave(0.1, 0.4, 0.02);
-        public SignalWave Q = new SignalWave(-0.1, 0.46, 0.01);
-        public SignalWave R = new SignalWave(1, 0.5, 0.01);
-        public SignalWave S = new SignalWave(-0.17, 0.54, 0.02);
-        public SignalWave T = new SignalWave(0.2, 0.7, 0.04);
-        public SignalWave[] arr = new SignalWave[5];
+        public SignalWave P = new SignalWave(0.1, 0.35, 0.02); // finish: 0.41
+        public SignalWave Q = new SignalWave(-0.1, 0.44, 0.01); // start: 0.410 || finish: 0.470
+        public SignalWave R = new SignalWave(1, 0.5, 0.01); // start: 0.470 || finish: 0.530
+        public SignalWave S = new SignalWave(-0.175, 0.575, 0.015); // start: 0.530 || finish: 0.620
+        public SignalWave T = new SignalWave(0.2, 0.76, 0.04); // start: 0.740 || finish: 0.880
+        public SignalWave[] arr = new SignalWave[5]; 
         public Form()
         {
             InitializeComponent();
@@ -115,6 +115,12 @@ namespace CardioSignalGraph
                 WidthBar2.Value = WidthBar1.Value;
 
             double temp_value = WidthBar1.Value / 10.0;
+            if (radioButtonST.Checked)
+            {
+                T.current_moment = T.default_moment + temp_value/2.0;
+                Chart_Update();
+                return;
+            }
             arr[RadioButtonCheck()].l_width = arr[RadioButtonCheck()].width * temp_value;
 
             Chart_Update();
@@ -125,9 +131,29 @@ namespace CardioSignalGraph
                 WidthBar1.Value = WidthBar2.Value;
 
             double temp_value = WidthBar2.Value / 10.0;
+            if (radioButtonST.Checked)
+            {
+                T.current_moment = T.default_moment + temp_value;
+                Chart_Update();
+                return;
+            }
             arr[RadioButtonCheck()].r_width = arr[RadioButtonCheck()].width * temp_value;
 
             Chart_Update();
+        }
+        private void radioButton_Click(object sender, EventArgs e)
+        {
+            if (radioButtonST.Checked)
+            {
+                AmplitudeBar.Enabled = false;
+                TimeBar.Enabled = false;
+            }
+            else
+            {
+                AmplitudeBar.Enabled = true;
+                TimeBar.Enabled = true;
+            }
+
         }
     }
     public class SignalWave
