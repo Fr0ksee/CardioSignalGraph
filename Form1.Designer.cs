@@ -339,7 +339,7 @@
         #endregion
 
         private System.Windows.Forms.BindingSource bindingSource1;
-        private System.Windows.Forms.NumericUpDown Pulse_OX_numeric;
+        public System.Windows.Forms.NumericUpDown Pulse_OX_numeric;
         private System.Windows.Forms.GroupBox ZubecBox;
         private System.Windows.Forms.RadioButton radioButtonP;
         private System.Windows.Forms.RadioButton radioButtonR;
@@ -348,7 +348,7 @@
         private System.Windows.Forms.RadioButton radioButtonQ;
         private System.Windows.Forms.GroupBox AmplitudeBox;
         private System.Windows.Forms.GroupBox groupBoxAll;
-        private System.Windows.Forms.DataVisualization.Charting.Chart chart;
+        public System.Windows.Forms.DataVisualization.Charting.Chart chart;
         private System.Windows.Forms.TrackBar AmplitudeBar;
         private System.Windows.Forms.GroupBox WidthBox;
         private System.Windows.Forms.TrackBar WidthBar1;

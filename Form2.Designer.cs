@@ -30,14 +30,14 @@
         {
             System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
             System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            this.chart = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.chart2 = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.CycleBox = new System.Windows.Forms.GroupBox();
             this.Cycle_numeric = new System.Windows.Forms.NumericUpDown();
             this.AlternationBox = new System.Windows.Forms.GroupBox();
             this.AlternationBar = new System.Windows.Forms.TrackBar();
             this.NoiceBox = new System.Windows.Forms.GroupBox();
             this.NoiceBar = new System.Windows.Forms.TrackBar();
-            ((System.ComponentModel.ISupportInitialize)(this.chart)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chart2)).BeginInit();
             this.CycleBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Cycle_numeric)).BeginInit();
             this.AlternationBox.SuspendLayout();
@@ -46,20 +46,20 @@
             ((System.ComponentModel.ISupportInitialize)(this.NoiceBar)).BeginInit();
             this.SuspendLayout();
             // 
-            // chart
+            // chart2
             // 
             chartArea1.Name = "ChartArea1";
-            this.chart.ChartAreas.Add(chartArea1);
-            this.chart.Location = new System.Drawing.Point(10, 10);
-            this.chart.Name = "chart";
+            this.chart2.ChartAreas.Add(chartArea1);
+            this.chart2.Location = new System.Drawing.Point(10, 10);
+            this.chart2.Name = "chart2";
             series1.BorderWidth = 2;
             series1.ChartArea = "ChartArea1";
             series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
             series1.Name = "Signal";
-            this.chart.Series.Add(series1);
-            this.chart.Size = new System.Drawing.Size(1180, 440);
-            this.chart.TabIndex = 18;
-            this.chart.Text = "chart1";
+            this.chart2.Series.Add(series1);
+            this.chart2.Size = new System.Drawing.Size(1180, 440);
+            this.chart2.TabIndex = 18;
+            this.chart2.Text = "chart1";
             // 
             // CycleBox
             // 
@@ -148,10 +148,11 @@
             this.Controls.Add(this.NoiceBox);
             this.Controls.Add(this.CycleBox);
             this.Controls.Add(this.AlternationBox);
-            this.Controls.Add(this.chart);
+            this.Controls.Add(this.chart2);
             this.Name = "Form2";
             this.Text = "Electrocardiogram model";
-            ((System.ComponentModel.ISupportInitialize)(this.chart)).EndInit();
+            this.Load += new System.EventHandler(this.Form2_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.chart2)).EndInit();
             this.CycleBox.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.Cycle_numeric)).EndInit();
             this.AlternationBox.ResumeLayout(false);
@@ -166,7 +167,7 @@
 
         #endregion
 
-        private System.Windows.Forms.DataVisualization.Charting.Chart chart;
+        private System.Windows.Forms.DataVisualization.Charting.Chart chart2;
         private System.Windows.Forms.GroupBox CycleBox;
         private System.Windows.Forms.NumericUpDown Cycle_numeric;
         private System.Windows.Forms.GroupBox AlternationBox;

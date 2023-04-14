@@ -20,10 +20,13 @@ namespace CardioSignalGraph
         public SignalWave S = new SignalWave(-0.175, 0.575, 0.015); // start: 0.530 || finish: 0.620
         public SignalWave T = new SignalWave(0.2, 0.76, 0.04); // start: 0.740 || finish: 0.880
         public SignalWave[] arr = new SignalWave[5];
+
+        public static Form instance;
         public Form()
         {
             InitializeComponent();
             StartPosition = FormStartPosition.CenterScreen;
+            instance = this;
         }
         private void Form1_Load(object sender, EventArgs e)
         {
@@ -69,7 +72,7 @@ namespace CardioSignalGraph
                 chart.Series[0].Points.AddXY(x, yValues[i]);
             }
         }
-        private int RadioButtonCheck()
+        public int RadioButtonCheck()
         {
             if (radioButtonP.Checked) { return 0; }
             else if (radioButtonQ.Checked) { return 1; }
@@ -128,31 +131,32 @@ namespace CardioSignalGraph
             chart.ChartAreas[0].AxisX.Maximum = scale;
             Chart_Update();
         }
-        public class SignalWave
-        {
-            public double default_amplitude { get; }
-            public double default_moment { get; }
-            public double width { get; }
-            public double r_width { get; set; }
-            public double l_width { get; set; }
-            public double current_amplitude { get; set; }
-            public double current_moment { get; set; }
-
-            public SignalWave(double amplitude, double default_moment, double width)
-            {
-                this.default_amplitude = amplitude;
-                this.current_amplitude = amplitude;
-                this.default_moment = default_moment;
-                this.current_moment = default_moment;
-                this.width = width;
-                this.r_width = width;
-                this.l_width = width;
-            }
-        }
         private void button1_Click(object sender, EventArgs e)
         {
             Form2 form2 = new Form2();
             form2.Show();
+        }
+
+    }
+    public class SignalWave
+    {
+        public double default_amplitude { get; }
+        public double default_moment { get; }
+        public double width { get; }
+        public double r_width { get; set; }
+        public double l_width { get; set; }
+        public double current_amplitude { get; set; }
+        public double current_moment { get; set; }
+
+        public SignalWave(double amplitude, double default_moment, double width)
+        {
+            this.default_amplitude = amplitude;
+            this.current_amplitude = amplitude;
+            this.default_moment = default_moment;
+            this.current_moment = default_moment;
+            this.width = width;
+            this.r_width = width;
+            this.l_width = width;
         }
     }
 }
