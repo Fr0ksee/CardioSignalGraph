@@ -1,4 +1,5 @@
 ﻿using System;
+using System.CodeDom.Compiler;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -34,7 +35,7 @@ namespace CardioSignalGraph
             chart2.Series[0].Points.Clear();
             int check = Form.instance.RadioButtonCheck();
 
-            double[] yValues = new double[1000];
+            double[] yValues = new double[100];
 
             for (int i = 0; i < Form.instance.arr.Length; i++)
             {
@@ -45,7 +46,7 @@ namespace CardioSignalGraph
                 for (int j = 0; j < yValues.Length; j++)
                 {
 
-                    double x = j / 1000.0;
+                    double x = j / 100.0;
                     double w = Form.instance.arr[i].l_width;
                     if (x > m)
                     {
@@ -55,15 +56,60 @@ namespace CardioSignalGraph
                     yValues[j] += y;
                 }
             }
-            for (int i = 0; i <  Cycle_numeric.Value; i++)
+
+            double[] yAltValues = new double[100];
+
+            for (int i = 0; i < Form.instance.arr.Length; i++)
             {
-                for (int j = 0; j < yValues.Length; j++)
+                double a = Form.instance.arr[i].current_amplitude;
+                double m = Form.instance.arr[i].current_moment;
+
+                for (int j = 0; j < yAltValues.Length; j++)
                 {
-                    double x = j / (Convert.ToDouble(Form.instance.Pulse_OX_numeric.Value) * 1000 / 60);
-                    chart2.Series[0].Points.AddXY((x + (i * Form.instance.chart.ChartAreas[0].AxisX.Maximum)), yValues[j]);
+                    double x = j / 100.0;
+                    double w = Form.instance.arr[i].l_width;
+                    if (x > m)
+                    {
+                        w = Form.instance.arr[i].r_width;
+                    }
+                    if (i == 4)
+                    {
+                        double y = (1 + ((AlternationBar.Value/1000.0)/a))*a * Math.Exp(-((Math.Pow(x - m, 2)) / (2 * Math.Pow(w, 2))));
+                        yAltValues[j] += y;
+                    }
+                    else
+                    {
+                        double y = a * Math.Exp(-((Math.Pow(x - m, 2)) / (2 * Math.Pow(w, 2))));
+                        yAltValues[j] += y;
+                    }
+                    
                 }
             }
 
+            double TempOxIndex = 1/(Convert.ToDouble(Form.instance.Pulse_OX_numeric.Value) * 1000 / 60);
+            double[] xAllValues = new double[yValues.Length * Convert.ToInt32(Cycle_numeric.Value)];
+            double[] yAllValues = new double[yValues.Length * Convert.ToInt32(Cycle_numeric.Value)];
+            for (int i = 0; i < Cycle_numeric.Value; i++)
+            {
+                if (i % 2 == 0) Array.Copy(yValues, 0, yAllValues, i*yValues.Length, yValues.Length);
+                else Array.Copy(yAltValues, 0, yAllValues, i * yAltValues.Length, yAltValues.Length);
+                for (int j = 0; j < yValues.Length; j++)
+                {
+                    xAllValues[j + (i * yValues.Length)] = (j + (i * yValues.Length)) * TempOxIndex * (1000/ yValues.Length);
+                }
+            }
+            chart2.Series[0].Points.DataBindXY(xAllValues, yAllValues);
+
+        }
+
+        private void AlternationBar_ValueChanged(object sender, EventArgs e)
+        {
+            Chart2_Update();
+        }
+
+        private void Cycle_numeric_ValueChanged(object sender, EventArgs e)
+        {
+            Chart2_Update();
         }
     }
 }

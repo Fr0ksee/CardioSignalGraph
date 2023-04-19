@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea8 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Series series8 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.chart2 = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.CycleBox = new System.Windows.Forms.GroupBox();
             this.Cycle_numeric = new System.Windows.Forms.NumericUpDown();
@@ -48,15 +48,25 @@
             // 
             // chart2
             // 
-            chartArea1.Name = "ChartArea1";
-            this.chart2.ChartAreas.Add(chartArea1);
-            this.chart2.Location = new System.Drawing.Point(10, 10);
+            chartArea8.InnerPlotPosition.Auto = false;
+            chartArea8.InnerPlotPosition.Height = 92F;
+            chartArea8.InnerPlotPosition.Width = 99F;
+            chartArea8.InnerPlotPosition.X = 1F;
+            chartArea8.InnerPlotPosition.Y = 2.25F;
+            chartArea8.Name = "ChartArea1";
+            chartArea8.Position.Auto = false;
+            chartArea8.Position.Height = 97F;
+            chartArea8.Position.Width = 99F;
+            chartArea8.Position.X = 0.5F;
+            chartArea8.Position.Y = 3F;
+            this.chart2.ChartAreas.Add(chartArea8);
+            this.chart2.Location = new System.Drawing.Point(12, 12);
             this.chart2.Name = "chart2";
-            series1.BorderWidth = 2;
-            series1.ChartArea = "ChartArea1";
-            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
-            series1.Name = "Signal";
-            this.chart2.Series.Add(series1);
+            series8.BorderWidth = 2;
+            series8.ChartArea = "ChartArea1";
+            series8.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
+            series8.Name = "Signal";
+            this.chart2.Series.Add(series8);
             this.chart2.Size = new System.Drawing.Size(1180, 440);
             this.chart2.TabIndex = 18;
             this.chart2.Text = "chart1";
@@ -96,6 +106,7 @@
             0,
             0,
             0});
+            this.Cycle_numeric.ValueChanged += new System.EventHandler(this.Cycle_numeric_ValueChanged);
             // 
             // AlternationBox
             // 
@@ -113,10 +124,12 @@
             // AlternationBar
             // 
             this.AlternationBar.Location = new System.Drawing.Point(10, 20);
-            this.AlternationBar.Minimum = -10;
+            this.AlternationBar.Maximum = 100;
+            this.AlternationBar.Minimum = -100;
             this.AlternationBar.Name = "AlternationBar";
             this.AlternationBar.Size = new System.Drawing.Size(350, 45);
             this.AlternationBar.TabIndex = 0;
+            this.AlternationBar.ValueChanged += new System.EventHandler(this.AlternationBar_ValueChanged);
             // 
             // NoiceBox
             // 
@@ -143,8 +156,9 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScroll = true;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.ClientSize = new System.Drawing.Size(1200, 550);
+            this.ClientSize = new System.Drawing.Size(1200, 561);
             this.Controls.Add(this.NoiceBox);
             this.Controls.Add(this.CycleBox);
             this.Controls.Add(this.AlternationBox);
