@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea8 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Series series8 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.chart2 = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.CycleBox = new System.Windows.Forms.GroupBox();
             this.Cycle_numeric = new System.Windows.Forms.NumericUpDown();
@@ -37,6 +37,7 @@
             this.AlternationBar = new System.Windows.Forms.TrackBar();
             this.NoiceBox = new System.Windows.Forms.GroupBox();
             this.NoiceBar = new System.Windows.Forms.TrackBar();
+            this.SmoothingButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.chart2)).BeginInit();
             this.CycleBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Cycle_numeric)).BeginInit();
@@ -48,25 +49,25 @@
             // 
             // chart2
             // 
-            chartArea8.InnerPlotPosition.Auto = false;
-            chartArea8.InnerPlotPosition.Height = 92F;
-            chartArea8.InnerPlotPosition.Width = 99F;
-            chartArea8.InnerPlotPosition.X = 1F;
-            chartArea8.InnerPlotPosition.Y = 2.25F;
-            chartArea8.Name = "ChartArea1";
-            chartArea8.Position.Auto = false;
-            chartArea8.Position.Height = 97F;
-            chartArea8.Position.Width = 99F;
-            chartArea8.Position.X = 0.5F;
-            chartArea8.Position.Y = 3F;
-            this.chart2.ChartAreas.Add(chartArea8);
+            chartArea3.InnerPlotPosition.Auto = false;
+            chartArea3.InnerPlotPosition.Height = 92F;
+            chartArea3.InnerPlotPosition.Width = 99F;
+            chartArea3.InnerPlotPosition.X = 1F;
+            chartArea3.InnerPlotPosition.Y = 2.25F;
+            chartArea3.Name = "ChartArea1";
+            chartArea3.Position.Auto = false;
+            chartArea3.Position.Height = 97F;
+            chartArea3.Position.Width = 99F;
+            chartArea3.Position.X = 0.5F;
+            chartArea3.Position.Y = 3F;
+            this.chart2.ChartAreas.Add(chartArea3);
             this.chart2.Location = new System.Drawing.Point(12, 12);
             this.chart2.Name = "chart2";
-            series8.BorderWidth = 2;
-            series8.ChartArea = "ChartArea1";
-            series8.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
-            series8.Name = "Signal";
-            this.chart2.Series.Add(series8);
+            series3.BorderWidth = 2;
+            series3.ChartArea = "ChartArea1";
+            series3.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
+            series3.Name = "Signal";
+            this.chart2.Series.Add(series3);
             this.chart2.Size = new System.Drawing.Size(1180, 440);
             this.chart2.TabIndex = 18;
             this.chart2.Text = "chart1";
@@ -102,7 +103,7 @@
             this.Cycle_numeric.Size = new System.Drawing.Size(80, 19);
             this.Cycle_numeric.TabIndex = 1;
             this.Cycle_numeric.Value = new decimal(new int[] {
-            30,
+            10,
             0,
             0,
             0});
@@ -112,7 +113,7 @@
             // 
             this.AlternationBox.Controls.Add(this.AlternationBar);
             this.AlternationBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.AlternationBox.Location = new System.Drawing.Point(300, 465);
+            this.AlternationBox.Location = new System.Drawing.Point(200, 465);
             this.AlternationBox.Margin = new System.Windows.Forms.Padding(2);
             this.AlternationBox.Name = "AlternationBox";
             this.AlternationBox.Padding = new System.Windows.Forms.Padding(2);
@@ -135,7 +136,7 @@
             // 
             this.NoiceBox.Controls.Add(this.NoiceBar);
             this.NoiceBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.NoiceBox.Location = new System.Drawing.Point(800, 465);
+            this.NoiceBox.Location = new System.Drawing.Point(600, 465);
             this.NoiceBox.Margin = new System.Windows.Forms.Padding(2);
             this.NoiceBox.Name = "NoiceBox";
             this.NoiceBox.Padding = new System.Windows.Forms.Padding(2);
@@ -147,10 +148,21 @@
             // NoiceBar
             // 
             this.NoiceBar.Location = new System.Drawing.Point(10, 20);
-            this.NoiceBar.Minimum = -10;
+            this.NoiceBar.Maximum = 20;
             this.NoiceBar.Name = "NoiceBar";
             this.NoiceBar.Size = new System.Drawing.Size(350, 45);
             this.NoiceBar.TabIndex = 0;
+            this.NoiceBar.ValueChanged += new System.EventHandler(this.NoiceBar_ValueChanged);
+            // 
+            // SmoothingButton
+            // 
+            this.SmoothingButton.Location = new System.Drawing.Point(1000, 465);
+            this.SmoothingButton.Name = "SmoothingButton";
+            this.SmoothingButton.Size = new System.Drawing.Size(120, 70);
+            this.SmoothingButton.TabIndex = 21;
+            this.SmoothingButton.Text = "Згладжування";
+            this.SmoothingButton.UseVisualStyleBackColor = true;
+            this.SmoothingButton.Click += new System.EventHandler(this.SmoothingButton_Click);
             // 
             // Form2
             // 
@@ -158,7 +170,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.ClientSize = new System.Drawing.Size(1200, 561);
+            this.ClientSize = new System.Drawing.Size(1200, 560);
+            this.Controls.Add(this.SmoothingButton);
             this.Controls.Add(this.NoiceBox);
             this.Controls.Add(this.CycleBox);
             this.Controls.Add(this.AlternationBox);
@@ -188,5 +201,6 @@
         private System.Windows.Forms.TrackBar AlternationBar;
         private System.Windows.Forms.GroupBox NoiceBox;
         private System.Windows.Forms.TrackBar NoiceBar;
+        private System.Windows.Forms.Button SmoothingButton;
     }
 }

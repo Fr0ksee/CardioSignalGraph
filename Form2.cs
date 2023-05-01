@@ -35,39 +35,42 @@ namespace CardioSignalGraph
             chart2.Series[0].Points.Clear();
             int check = Form.instance.RadioButtonCheck();
 
-            double[] yValues = new double[100];
+            double[] yValues = new double[400];
 
             for (int i = 0; i < Form.instance.arr.Length; i++)
             {
                 double a = Form.instance.arr[i].current_amplitude;
                 double m = Form.instance.arr[i].current_moment;
 
-
+                Random random = new Random();
                 for (int j = 0; j < yValues.Length; j++)
                 {
 
-                    double x = j / 100.0;
+                    double x = j / 400.0;
                     double w = Form.instance.arr[i].l_width;
+                    double randomNumber = (0 - (NoiceBar.Value/1000.0)) + (random.NextDouble() * ((NoiceBar.Value/1000.0) - (0 - (NoiceBar.Value/1000.0))));
                     if (x > m)
                     {
                         w = Form.instance.arr[i].r_width;
                     }
                     double y = a * Math.Exp(-((Math.Pow(x - m, 2)) / (2 * Math.Pow(w, 2))));
+                    y += randomNumber;
                     yValues[j] += y;
                 }
             }
 
-            double[] yAltValues = new double[100];
+            double[] yAltValues = new double[400];
 
             for (int i = 0; i < Form.instance.arr.Length; i++)
             {
                 double a = Form.instance.arr[i].current_amplitude;
                 double m = Form.instance.arr[i].current_moment;
-
+                Random random = new Random();
                 for (int j = 0; j < yAltValues.Length; j++)
                 {
-                    double x = j / 100.0;
+                    double x = j / 400.0;
                     double w = Form.instance.arr[i].l_width;
+                    double randomNumber = (0 - (NoiceBar.Value/1000.0)) + (random.NextDouble() * ((NoiceBar.Value/1000.0) - (0 - (NoiceBar.Value/1000.0))));
                     if (x > m)
                     {
                         w = Form.instance.arr[i].r_width;
@@ -75,11 +78,13 @@ namespace CardioSignalGraph
                     if (i == 4)
                     {
                         double y = (1 + ((AlternationBar.Value/1000.0)/a))*a * Math.Exp(-((Math.Pow(x - m, 2)) / (2 * Math.Pow(w, 2))));
+                        y += randomNumber;
                         yAltValues[j] += y;
                     }
                     else
                     {
                         double y = a * Math.Exp(-((Math.Pow(x - m, 2)) / (2 * Math.Pow(w, 2))));
+                        y += randomNumber;
                         yAltValues[j] += y;
                     }
                     
@@ -110,6 +115,17 @@ namespace CardioSignalGraph
         private void Cycle_numeric_ValueChanged(object sender, EventArgs e)
         {
             Chart2_Update();
+        }
+
+        private void NoiceBar_ValueChanged(object sender, EventArgs e)
+        {
+            Chart2_Update();
+        }
+
+        private void SmoothingButton_Click(object sender, EventArgs e)
+        {
+            Form3 form3 = new Form3();
+            form3.Show();
         }
     }
 }
