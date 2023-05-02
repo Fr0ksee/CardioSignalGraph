@@ -33,11 +33,19 @@ namespace CardioSignalGraph
             System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
             System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.chart3 = new System.Windows.Forms.DataVisualization.Charting.Chart();
-            this.NoiceBox = new System.Windows.Forms.GroupBox();
-            this.NoiceBar = new System.Windows.Forms.TrackBar();
+            this.AlphaBox = new System.Windows.Forms.GroupBox();
+            this.AlphaLabel = new System.Windows.Forms.Label();
+            this.AlphaBar = new System.Windows.Forms.TrackBar();
+            this.ExponentionalRadioButton = new System.Windows.Forms.RadioButton();
+            this.WidthBox = new System.Windows.Forms.GroupBox();
+            this.WidthLabel = new System.Windows.Forms.Label();
+            this.WidthBar = new System.Windows.Forms.TrackBar();
+            this.MovingAverageRadioButton = new System.Windows.Forms.RadioButton();
             ((System.ComponentModel.ISupportInitialize)(this.chart3)).BeginInit();
-            this.NoiceBox.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.NoiceBar)).BeginInit();
+            this.AlphaBox.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.AlphaBar)).BeginInit();
+            this.WidthBox.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.WidthBar)).BeginInit();
             this.SuspendLayout();
             // 
             // chart3
@@ -65,26 +73,95 @@ namespace CardioSignalGraph
             this.chart3.TabIndex = 18;
             this.chart3.Text = "chart1";
             // 
-            // NoiceBox
+            // AlphaBox
             // 
-            this.NoiceBox.Controls.Add(this.NoiceBar);
-            this.NoiceBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.NoiceBox.Location = new System.Drawing.Point(50, 465);
-            this.NoiceBox.Margin = new System.Windows.Forms.Padding(2);
-            this.NoiceBox.Name = "NoiceBox";
-            this.NoiceBox.Padding = new System.Windows.Forms.Padding(2);
-            this.NoiceBox.Size = new System.Drawing.Size(402, 70);
-            this.NoiceBox.TabIndex = 21;
-            this.NoiceBox.TabStop = false;
-            this.NoiceBox.Text = "Рівень шуму";
+            this.AlphaBox.Controls.Add(this.AlphaLabel);
+            this.AlphaBox.Controls.Add(this.AlphaBar);
+            this.AlphaBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.AlphaBox.Location = new System.Drawing.Point(50, 465);
+            this.AlphaBox.Margin = new System.Windows.Forms.Padding(2);
+            this.AlphaBox.Name = "AlphaBox";
+            this.AlphaBox.Padding = new System.Windows.Forms.Padding(2);
+            this.AlphaBox.Size = new System.Drawing.Size(400, 70);
+            this.AlphaBox.TabIndex = 21;
+            this.AlphaBox.TabStop = false;
+            this.AlphaBox.Text = "Параметр альфа";
             // 
-            // NoiceBar
+            // AlphaLabel
             // 
-            this.NoiceBar.Location = new System.Drawing.Point(10, 20);
-            this.NoiceBar.Maximum = 20;
-            this.NoiceBar.Name = "NoiceBar";
-            this.NoiceBar.Size = new System.Drawing.Size(350, 45);
-            this.NoiceBar.TabIndex = 0;
+            this.AlphaLabel.AutoSize = true;
+            this.AlphaLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.AlphaLabel.Location = new System.Drawing.Point(360, 20);
+            this.AlphaLabel.Name = "AlphaLabel";
+            this.AlphaLabel.Size = new System.Drawing.Size(19, 20);
+            this.AlphaLabel.TabIndex = 22;
+            this.AlphaLabel.Text = "0";
+            // 
+            // AlphaBar
+            // 
+            this.AlphaBar.Location = new System.Drawing.Point(10, 20);
+            this.AlphaBar.Maximum = 20;
+            this.AlphaBar.Name = "AlphaBar";
+            this.AlphaBar.Size = new System.Drawing.Size(350, 45);
+            this.AlphaBar.TabIndex = 0;
+            // 
+            // ExponentionalRadioButton
+            // 
+            this.ExponentionalRadioButton.AutoSize = true;
+            this.ExponentionalRadioButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ExponentionalRadioButton.Location = new System.Drawing.Point(950, 465);
+            this.ExponentionalRadioButton.Name = "ExponentionalRadioButton";
+            this.ExponentionalRadioButton.Size = new System.Drawing.Size(248, 20);
+            this.ExponentionalRadioButton.TabIndex = 22;
+            this.ExponentionalRadioButton.TabStop = true;
+            this.ExponentionalRadioButton.Text = "Експоненційне згладжування";
+            this.ExponentionalRadioButton.UseVisualStyleBackColor = true;
+            this.ExponentionalRadioButton.CheckedChanged += new System.EventHandler(this.RadioButton_CheckedChanged);
+            // 
+            // WidthBox
+            // 
+            this.WidthBox.Controls.Add(this.WidthLabel);
+            this.WidthBox.Controls.Add(this.WidthBar);
+            this.WidthBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.WidthBox.Location = new System.Drawing.Point(500, 465);
+            this.WidthBox.Margin = new System.Windows.Forms.Padding(2);
+            this.WidthBox.Name = "WidthBox";
+            this.WidthBox.Padding = new System.Windows.Forms.Padding(2);
+            this.WidthBox.Size = new System.Drawing.Size(400, 70);
+            this.WidthBox.TabIndex = 23;
+            this.WidthBox.TabStop = false;
+            this.WidthBox.Text = "Ширина вікна";
+            // 
+            // WidthLabel
+            // 
+            this.WidthLabel.AutoSize = true;
+            this.WidthLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.WidthLabel.Location = new System.Drawing.Point(360, 20);
+            this.WidthLabel.Name = "WidthLabel";
+            this.WidthLabel.Size = new System.Drawing.Size(19, 20);
+            this.WidthLabel.TabIndex = 22;
+            this.WidthLabel.Text = "0";
+            // 
+            // WidthBar
+            // 
+            this.WidthBar.Location = new System.Drawing.Point(10, 20);
+            this.WidthBar.Maximum = 20;
+            this.WidthBar.Name = "WidthBar";
+            this.WidthBar.Size = new System.Drawing.Size(350, 45);
+            this.WidthBar.TabIndex = 0;
+            // 
+            // MovingAverageRadioButton
+            // 
+            this.MovingAverageRadioButton.AutoSize = true;
+            this.MovingAverageRadioButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.MovingAverageRadioButton.Location = new System.Drawing.Point(950, 510);
+            this.MovingAverageRadioButton.Name = "MovingAverageRadioButton";
+            this.MovingAverageRadioButton.Size = new System.Drawing.Size(145, 20);
+            this.MovingAverageRadioButton.TabIndex = 24;
+            this.MovingAverageRadioButton.TabStop = true;
+            this.MovingAverageRadioButton.Text = "Ковзне середнє";
+            this.MovingAverageRadioButton.UseVisualStyleBackColor = true;
+            this.MovingAverageRadioButton.CheckedChanged += new System.EventHandler(this.RadioButton_CheckedChanged);
             // 
             // Form3
             // 
@@ -92,23 +169,36 @@ namespace CardioSignalGraph
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.ClientSize = new System.Drawing.Size(1200, 560);
-            this.Controls.Add(this.NoiceBox);
+            this.Controls.Add(this.MovingAverageRadioButton);
+            this.Controls.Add(this.WidthBox);
+            this.Controls.Add(this.ExponentionalRadioButton);
+            this.Controls.Add(this.AlphaBox);
             this.Controls.Add(this.chart3);
             this.Name = "Form3";
             this.Text = "Form3";
             this.Load += new System.EventHandler(this.Form3_Load);
             ((System.ComponentModel.ISupportInitialize)(this.chart3)).EndInit();
-            this.NoiceBox.ResumeLayout(false);
-            this.NoiceBox.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.NoiceBar)).EndInit();
+            this.AlphaBox.ResumeLayout(false);
+            this.AlphaBox.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.AlphaBar)).EndInit();
+            this.WidthBox.ResumeLayout(false);
+            this.WidthBox.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.WidthBar)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
         #endregion
 
         private System.Windows.Forms.DataVisualization.Charting.Chart chart3;
-        private System.Windows.Forms.GroupBox NoiceBox;
-        private System.Windows.Forms.TrackBar NoiceBar;
+        private System.Windows.Forms.GroupBox AlphaBox;
+        private System.Windows.Forms.TrackBar AlphaBar;
+        private System.Windows.Forms.Label AlphaLabel;
+        private System.Windows.Forms.RadioButton ExponentionalRadioButton;
+        private System.Windows.Forms.GroupBox WidthBox;
+        private System.Windows.Forms.Label WidthLabel;
+        private System.Windows.Forms.TrackBar WidthBar;
+        private System.Windows.Forms.RadioButton MovingAverageRadioButton;
     }
 }

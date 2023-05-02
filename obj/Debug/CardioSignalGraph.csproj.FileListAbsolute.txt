@@ -34,3 +34,5 @@ D:\Studing\AI\Lab_3\CardioSignalGraph\CardioSignalGraph\obj\Debug\CardioSignalGr
 D:\Studing\AI\Lab_3\CardioSignalGraph\CardioSignalGraph\obj\Debug\CardioSignalGraph.exe
 D:\Studing\AI\Lab_3\CardioSignalGraph\CardioSignalGraph\obj\Debug\CardioSignalGraph.pdb
 D:\Studing\AI\Lab_3\CardioSignalGraph\CardioSignalGraph\obj\Debug\CardioSignalGraph.Form3.resources
+C:\Studing\AI\3\obj\Debug\CardioSignalGraph.Form2.resources
+C:\Studing\AI\3\obj\Debug\CardioSignalGraph.Form3.resources

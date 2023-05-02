@@ -21,5 +21,19 @@ namespace CardioSignalGraph
         {
 
         }
+
+        private void RadioButton_CheckedChanged(object sender, EventArgs e)
+        {
+            if (ExponentionalRadioButton.Checked)
+            {
+                AlphaBar.Enabled = true;
+                WidthBar.Enabled = false;
+            }
+            if (MovingAverageRadioButton.Checked)
+            {
+                AlphaBar.Enabled = false;
+                WidthBar.Enabled = true;
+            }
+        }
     }
 }
