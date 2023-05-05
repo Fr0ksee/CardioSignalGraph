@@ -196,7 +196,7 @@
 
         public System.Windows.Forms.DataVisualization.Charting.Chart chart2;
         private System.Windows.Forms.GroupBox CycleBox;
-        private System.Windows.Forms.NumericUpDown Cycle_numeric;
+        public System.Windows.Forms.NumericUpDown Cycle_numeric;
         private System.Windows.Forms.GroupBox AlternationBox;
         private System.Windows.Forms.TrackBar AlternationBar;
         private System.Windows.Forms.GroupBox NoiceBox;

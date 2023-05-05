@@ -57,6 +57,29 @@ namespace CardioSignalGraph
             chart3.Series[0].Points.Clear();
             chart3.Series[0].Points.DataBindXY(xValues, yChangedValues);
         }
+        private void MovingAvarageSmoothing()
+        {
+            yChangedValues.Clear();
+            
+            for (int i = 0; i < yValues.Count; i++)
+            {
+                int startIndex = Math.Max(0, i - WidthBar.Value + 1);
+                int endIndex = Math.Min(yValues.Count - 1, i + WidthBar.Value - 1);
+                double sum = 0;
+            
+                for (int j = startIndex; j <= endIndex; j++)
+                {
+                    sum += yValues[j];
+                }
+            
+                double average = sum / (endIndex - startIndex + 1);
+                yChangedValues.Add(average);
+            }
+
+
+            chart3.Series[0].Points.Clear();
+            chart3.Series[0].Points.DataBindXY(xValues, yChangedValues);
+        }
 
         private void RadioButton_CheckedChanged(object sender, EventArgs e)
         {
@@ -76,6 +99,19 @@ namespace CardioSignalGraph
         {
             AlphaLabel.Text = Convert.ToString(AlphaBar.Value / 100.0);
             ExponentialSmoothing();
+        }
+
+        private void WidthBar_ValueChanged(object sender, EventArgs e)
+        {
+            WidthLabel.Text = WidthBar.Value.ToString();
+            if (WidthBar.Value == 0) 
+            {
+
+                chart3.Series[0].Points.Clear();
+                chart3.Series[0].Points.DataBindXY(xValues, yValues);
+                return;
+            }
+            MovingAvarageSmoothing();
         }
     }
 }
