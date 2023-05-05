@@ -30,8 +30,8 @@ namespace CardioSignalGraph
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.chart3 = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.AlphaBox = new System.Windows.Forms.GroupBox();
             this.AlphaLabel = new System.Windows.Forms.Label();
@@ -50,25 +50,25 @@ namespace CardioSignalGraph
             // 
             // chart3
             // 
-            chartArea2.InnerPlotPosition.Auto = false;
-            chartArea2.InnerPlotPosition.Height = 92F;
-            chartArea2.InnerPlotPosition.Width = 99F;
-            chartArea2.InnerPlotPosition.X = 1F;
-            chartArea2.InnerPlotPosition.Y = 2.25F;
-            chartArea2.Name = "ChartArea1";
-            chartArea2.Position.Auto = false;
-            chartArea2.Position.Height = 97F;
-            chartArea2.Position.Width = 99F;
-            chartArea2.Position.X = 0.5F;
-            chartArea2.Position.Y = 3F;
-            this.chart3.ChartAreas.Add(chartArea2);
+            chartArea3.InnerPlotPosition.Auto = false;
+            chartArea3.InnerPlotPosition.Height = 92F;
+            chartArea3.InnerPlotPosition.Width = 99F;
+            chartArea3.InnerPlotPosition.X = 1F;
+            chartArea3.InnerPlotPosition.Y = 2.25F;
+            chartArea3.Name = "ChartArea1";
+            chartArea3.Position.Auto = false;
+            chartArea3.Position.Height = 97F;
+            chartArea3.Position.Width = 99F;
+            chartArea3.Position.X = 0.5F;
+            chartArea3.Position.Y = 3F;
+            this.chart3.ChartAreas.Add(chartArea3);
             this.chart3.Location = new System.Drawing.Point(12, 12);
             this.chart3.Name = "chart3";
-            series2.BorderWidth = 2;
-            series2.ChartArea = "ChartArea1";
-            series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
-            series2.Name = "Signal";
-            this.chart3.Series.Add(series2);
+            series3.BorderWidth = 2;
+            series3.ChartArea = "ChartArea1";
+            series3.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
+            series3.Name = "Signal";
+            this.chart3.Series.Add(series3);
             this.chart3.Size = new System.Drawing.Size(1180, 440);
             this.chart3.TabIndex = 18;
             this.chart3.Text = "chart1";
@@ -145,7 +145,7 @@ namespace CardioSignalGraph
             // 
             // WidthBar
             // 
-            this.WidthBar.Location = new System.Drawing.Point(10, 20);
+            this.WidthBar.Location = new System.Drawing.Point(9, 20);
             this.WidthBar.Maximum = 20;
             this.WidthBar.Name = "WidthBar";
             this.WidthBar.Size = new System.Drawing.Size(350, 45);
