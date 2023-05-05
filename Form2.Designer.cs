@@ -194,7 +194,7 @@
 
         #endregion
 
-        private System.Windows.Forms.DataVisualization.Charting.Chart chart2;
+        public System.Windows.Forms.DataVisualization.Charting.Chart chart2;
         private System.Windows.Forms.GroupBox CycleBox;
         private System.Windows.Forms.NumericUpDown Cycle_numeric;
         private System.Windows.Forms.GroupBox AlternationBox;

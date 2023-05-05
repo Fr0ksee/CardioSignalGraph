@@ -14,10 +14,12 @@ namespace CardioSignalGraph
 {
     public partial class Form2 : System.Windows.Forms.Form
     {
+        public static Form2 instance;
 
         public Form2()
         {
             InitializeComponent();
+            instance = this;
         }
 
         private void Form2_Load(object sender, EventArgs e)
@@ -36,7 +38,7 @@ namespace CardioSignalGraph
             chart2.Series[0].Points.Clear();
             int check = Form.instance.RadioButtonCheck();
 
-            double[] yValues = new double[400];
+            double[] yValues = new double[500];
 
             for (int i = 0; i < Form.instance.arr.Length; i++)
             {
@@ -47,7 +49,7 @@ namespace CardioSignalGraph
                 for (int j = 0; j < yValues.Length; j++)
                 {
 
-                    double x = j / 400.0;
+                    double x = j / 500.0;
                     double w = Form.instance.arr[i].l_width;
                     double randomNumber = (0 - (NoiceBar.Value/1000.0)) + (random.NextDouble() * ((NoiceBar.Value/1000.0) - (0 - (NoiceBar.Value/1000.0))));
                     if (x > m)
@@ -60,7 +62,7 @@ namespace CardioSignalGraph
                 }
             }
 
-            double[] yAltValues = new double[400];
+            double[] yAltValues = new double[500];
 
             for (int i = 0; i < Form.instance.arr.Length; i++)
             {
@@ -69,7 +71,7 @@ namespace CardioSignalGraph
                 Random random = new Random();
                 for (int j = 0; j < yAltValues.Length; j++)
                 {
-                    double x = j / 400.0;
+                    double x = j / 500.0;
                     double w = Form.instance.arr[i].l_width;
                     double randomNumber = (0 - (NoiceBar.Value/1000.0)) + (random.NextDouble() * ((NoiceBar.Value/1000.0) - (0 - (NoiceBar.Value/1000.0))));
                     if (x > m)

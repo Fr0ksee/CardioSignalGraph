@@ -30,8 +30,8 @@ namespace CardioSignalGraph
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.chart3 = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.AlphaBox = new System.Windows.Forms.GroupBox();
             this.AlphaLabel = new System.Windows.Forms.Label();
@@ -50,25 +50,25 @@ namespace CardioSignalGraph
             // 
             // chart3
             // 
-            chartArea1.InnerPlotPosition.Auto = false;
-            chartArea1.InnerPlotPosition.Height = 92F;
-            chartArea1.InnerPlotPosition.Width = 99F;
-            chartArea1.InnerPlotPosition.X = 1F;
-            chartArea1.InnerPlotPosition.Y = 2.25F;
-            chartArea1.Name = "ChartArea1";
-            chartArea1.Position.Auto = false;
-            chartArea1.Position.Height = 97F;
-            chartArea1.Position.Width = 99F;
-            chartArea1.Position.X = 0.5F;
-            chartArea1.Position.Y = 3F;
-            this.chart3.ChartAreas.Add(chartArea1);
+            chartArea2.InnerPlotPosition.Auto = false;
+            chartArea2.InnerPlotPosition.Height = 92F;
+            chartArea2.InnerPlotPosition.Width = 99F;
+            chartArea2.InnerPlotPosition.X = 1F;
+            chartArea2.InnerPlotPosition.Y = 2.25F;
+            chartArea2.Name = "ChartArea1";
+            chartArea2.Position.Auto = false;
+            chartArea2.Position.Height = 97F;
+            chartArea2.Position.Width = 99F;
+            chartArea2.Position.X = 0.5F;
+            chartArea2.Position.Y = 3F;
+            this.chart3.ChartAreas.Add(chartArea2);
             this.chart3.Location = new System.Drawing.Point(12, 12);
             this.chart3.Name = "chart3";
-            series1.BorderWidth = 2;
-            series1.ChartArea = "ChartArea1";
-            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
-            series1.Name = "Signal";
-            this.chart3.Series.Add(series1);
+            series2.BorderWidth = 2;
+            series2.ChartArea = "ChartArea1";
+            series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
+            series2.Name = "Signal";
+            this.chart3.Series.Add(series2);
             this.chart3.Size = new System.Drawing.Size(1180, 440);
             this.chart3.TabIndex = 18;
             this.chart3.Text = "chart1";
@@ -90,20 +90,21 @@ namespace CardioSignalGraph
             // AlphaLabel
             // 
             this.AlphaLabel.AutoSize = true;
-            this.AlphaLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.AlphaLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.AlphaLabel.Location = new System.Drawing.Point(360, 20);
             this.AlphaLabel.Name = "AlphaLabel";
-            this.AlphaLabel.Size = new System.Drawing.Size(19, 20);
+            this.AlphaLabel.Size = new System.Drawing.Size(16, 17);
             this.AlphaLabel.TabIndex = 22;
             this.AlphaLabel.Text = "0";
             // 
             // AlphaBar
             // 
             this.AlphaBar.Location = new System.Drawing.Point(10, 20);
-            this.AlphaBar.Maximum = 20;
+            this.AlphaBar.Maximum = 100;
             this.AlphaBar.Name = "AlphaBar";
             this.AlphaBar.Size = new System.Drawing.Size(350, 45);
             this.AlphaBar.TabIndex = 0;
+            this.AlphaBar.ValueChanged += new System.EventHandler(this.AlphaBar_ValueChanged);
             // 
             // ExponentionalRadioButton
             // 
@@ -135,10 +136,10 @@ namespace CardioSignalGraph
             // WidthLabel
             // 
             this.WidthLabel.AutoSize = true;
-            this.WidthLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.WidthLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.WidthLabel.Location = new System.Drawing.Point(360, 20);
             this.WidthLabel.Name = "WidthLabel";
-            this.WidthLabel.Size = new System.Drawing.Size(19, 20);
+            this.WidthLabel.Size = new System.Drawing.Size(16, 17);
             this.WidthLabel.TabIndex = 22;
             this.WidthLabel.Text = "0";
             // 
@@ -167,6 +168,7 @@ namespace CardioSignalGraph
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScroll = true;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.ClientSize = new System.Drawing.Size(1200, 560);
             this.Controls.Add(this.MovingAverageRadioButton);
